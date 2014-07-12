@@ -10,6 +10,8 @@ import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.jface.text.IDocument;
+import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.viewers.ISelection;
 
 /**
  * SnippetManager
@@ -34,17 +36,26 @@ public class SnippetManager extends AbstractHandler
 	      dialog.open();
 	      
 	      //Getting current editor instance
-	      IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-	      IEditorPart part = editor;
-	      ITextEditor editor_tmp = (ITextEditor)part;
-	      IDocumentProvider dp = editor_tmp.getDocumentProvider();
-	      IDocument doc = dp.getDocument(editor_tmp.getEditorInput());
-	      int offset = doc.getLineOffset(doc.getNumberOfLines() - 4);
-	      
-	      //Insert snippet
-	      doc.replace(offset, 0, ((Snippet)dialog.getFirstResult()).code + "\n");
+	      IEditorPart editor_part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+	      if ( editor_part instanceof ITextEditor ) 
+	      {
+	          final ITextEditor editor = (ITextEditor)editor_part;
+	          IDocumentProvider provider = editor.getDocumentProvider();
+	          IDocument document = provider.getDocument( editor.getEditorInput() );
+	          ISelection selection = editor.getSelectionProvider().getSelection();
+	          if ( selection instanceof TextSelection ) 
+	          {
+	              final TextSelection text_selection = (TextSelection)selection;
+	              
+	              //Insert snippet
+	              document.replace( text_selection.getOffset(), text_selection.getLength(), ((Snippet)dialog.getFirstResult()).code);
+	          }
+	      }
 	    }
-	    catch (Exception ex) {}
+	    catch (Exception ex) 
+	    {
+	    	ex.printStackTrace();
+	    }
 	    
 		return null;
 	}
