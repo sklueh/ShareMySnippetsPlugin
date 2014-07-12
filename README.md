@@ -1,7 +1,7 @@
 ShareMySnippetsPlugin
 =====================
 
-Eclipse plugin for getting code-snippets from http://www.share-my-snippets.de directly into your IDE.
+Eclipse plugin for getting code-snippets from http://share-my-snippets.de directly into your IDE.
 
 ### Installation
 
