@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ShareMySnippetsPlugin
+Bundle-SymbolicName: ShareMySnippetsPlugin;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: sharemysnippetsplugin.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text;bundle-version="3.9.0",
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.9.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: libs/json-simple-1.1.1.jar,
+ .
+Import-Package: sharemysnippets.handlers

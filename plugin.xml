@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Share My Snippets"
+            id="ShareMySnippetsPlugin.commands.category">
+      </category>
+      <command
+            name="Browse Snippets"
+            categoryId="ShareMySnippetsPlugin.commands.category"
+            id="ShareMySnippetsPlugin.commands.sampleCommand">
+      </command>
+      <command
+            name="Refresh snippet cache"
+            categoryId="ShareMySnippetsPlugin.commands.category"
+            id="ShareMySnippetsPlugin.commands.refreshSnippetCache">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="ShareMySnippetsPlugin.commands.sampleCommand"
+            class="sharemysnippetsplugin.handlers.SnippetManager">
+      </handler>
+      <handler
+      		commandId="ShareMySnippetsPlugin.commands.refreshSnippetCache"            
+            class="sharemysnippetsplugin.handlers.RefreshSnippetCache">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="ShareMySnippetsPlugin.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+6"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Share My Snippets"
+               mnemonic="M"
+               id="ShareMySnippetsPlugin.menus.sampleMenu">
+            <command
+                  commandId="ShareMySnippetsPlugin.commands.sampleCommand"
+                  mnemonic="S"
+                  id="ShareMySnippetsPlugin.menus.sampleCommand">
+            </command>
+            
+            <command
+                  commandId="ShareMySnippetsPlugin.commands.refreshSnippetCache"
+                  mnemonic="R"
+                  id="ShareMySnippetsPlugin.menus.refreshSnippetCache">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
