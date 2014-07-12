@@ -6,10 +6,10 @@ Eclipse plugin for getting code-snippets from http://share-my-snippets.de direct
 ## Installation
 
 1. Enter the menu:
-Help > Install New Software
+  * Help > Install New Software
 
 2. Work with: 
-http://share-my-snippets.de/install/
+  * http://share-my-snippets.de/install/
 
 3. Select "ShareMySnippetsPluginFeature", click next and follow the instructions.
 
